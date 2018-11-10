@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 
 <!--
 Licensed to the Apache Software Foundation (ASF) under one
@@ -46,15 +46,16 @@ under the License.
   <inceptionYear>2001</inceptionYear>
 
   <properties>
+    <javaVersion>11</javaVersion>
     <maven.version>3.0.5</maven.version>
-    <maven.compiler.source>1.7</maven.compiler.source>
-    <maven.compiler.target>1.7</maven.compiler.target>
+    <maven.compiler.source>11</maven.compiler.source>
+    <maven.compiler.target>11</maven.compiler.target>
     <classWorldsVersion>2.6.0</classWorldsVersion>
     <commonsCliVersion>1.4</commonsCliVersion>
     <commonsLangVersion>3.8.1</commonsLangVersion>
     <junitVersion>4.12</junitVersion>
     <mockitoVersion>2.21.0</mockitoVersion>
-    <plexusVersion>1.7.1</plexusVersion>
+    <plexusVersion>1.8-SNAPSHOT</plexusVersion>
     <plexusInterpolationVersion>1.25</plexusInterpolationVersion>
     <plexusUtilsVersion>3.1.0</plexusUtilsVersion>
     <guiceVersion>4.2.1</guiceVersion>
@@ -115,6 +116,27 @@ under the License.
       <url>scm:svn:https://svn.apache.org/repos/asf/maven/website/components/${maven.site.path}</url>
     </site>
   </distributionManagement>
+
+  <repositories>
+    <!-- for plexus snapshots -->
+    <repository>
+      <id>sonatype-snapshots</id>
+      <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </repository>
+  </repositories>
+
+  <pluginRepositories>
+    <pluginRepository>
+      <id>plexus-sonatype-snapshots</id>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+      <url>https://oss.sonatype.org/content/repositories/plexus-snapshots</url>
+    </pluginRepository>
+  </pluginRepositories>
 
   <contributors>
     <contributor>
@@ -552,15 +574,23 @@ under the License.
     </pluginManagement>
     <plugins>
       <plugin>
+        <artifactId>maven-enforcer-plugin</artifactId>
+        <version>3.0.0-M2</version>
+		<dependencies>
+			<dependency>
+              <groupId>org.codehaus.mojo</groupId>
+              <artifactId>extra-enforcer-rules</artifactId>
+              <version>1.1</version>
+			</dependency>
+		</dependencies>
+      </plugin>
+
+      <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>animal-sniffer-maven-plugin</artifactId>
         <version>1.15</version>
         <configuration>
-          <signature>
-            <groupId>org.codehaus.mojo.signature</groupId>
-            <artifactId>java17</artifactId>
-            <version>1.0</version>
-          </signature>
+          <skip>true</skip><!-- no rules for Java 11 yet -->
         </configuration>
         <executions>
           <execution>
@@ -685,6 +715,25 @@ under the License.
             </configuration>
           </plugin>
         </plugins>
+      </build>
+    </profile>
+    <profile>
+      <id>jdk11plus</id>
+      <activation>
+        <jdk>[11,)</jdk>
+      </activation>
+      <build>
+        <pluginManagement>
+          <plugins>
+            <plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-compiler-plugin</artifactId>
+              <configuration>
+                <release>11</release>
+              </configuration>
+            </plugin>
+          </plugins>
+        </pluginManagement>
       </build>
     </profile>
   </profiles>
