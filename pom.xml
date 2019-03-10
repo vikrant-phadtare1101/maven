@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 
 <!--
 Licensed to the Apache Software Foundation (ASF) under one
@@ -151,6 +151,13 @@ under the License.
       <name>Fabiano Cipriano de Oliveira (MNG-6261)</name>
     </contributor>
   </contributors>
+
+  <repositories>
+    <repository>
+      <id>staged-releases</id>
+      <url>https://repository.apache.org/content/repositories/maven-1491</url>
+    </repository>
+  </repositories>
 
   <!--bootstrap-start-comment-->
   <dependencyManagement>
