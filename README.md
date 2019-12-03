@@ -90,3 +90,5 @@ mvn -DdistributionTargetDir="$HOME/app/maven/apache-maven-3.6.x-SNAPSHOT" clean 
 [building-maven]: https://maven.apache.org/guides/development/guide-building-maven.html
 [cla]: https://www.apache.org/licenses/#clas
 
+Build with junit and clover:
+clean install clover:setup test clover:aggregate clover:clover -Dmaven.test.failure.ignore=true -Drat.skip=true
