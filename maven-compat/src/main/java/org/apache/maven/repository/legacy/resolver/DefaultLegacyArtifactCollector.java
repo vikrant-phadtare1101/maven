@@ -815,4 +815,13 @@ public class DefaultLegacyArtifactCollector
                         listeners );
     }
 
+ public void getFoo2() {
+ 	    System.out.println("");
+	    System.out.println("");
+	    System.out.println("");
+	    System.out.println("");
+	    System.out.println("");
+	    System.out.println("");
+	    System.out.println("");
+ }
 }
