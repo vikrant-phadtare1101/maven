@@ -77,7 +77,7 @@ public class FileSourceTest
     }
 
     @Test
-    public void testGetFile()
+    public void testGetFile2()
     {
         File txtFile = new File( "target/test-classes/source.txt" );
         FileSource source = new FileSource( txtFile );
