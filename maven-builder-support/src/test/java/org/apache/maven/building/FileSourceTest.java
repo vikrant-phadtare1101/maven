@@ -76,4 +76,12 @@ public class FileSourceTest
         assertEquals( txtFile.getAbsoluteFile(), source.getFile() );
     }
 
+    @Test
+    public void testGetFile()
+    {
+        File txtFile = new File( "target/test-classes/source.txt" );
+        FileSource source = new FileSource( txtFile );
+        source.toString();
+        assertTrue(true);
+    }
 }
