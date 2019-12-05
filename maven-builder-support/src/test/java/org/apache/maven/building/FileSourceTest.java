@@ -46,43 +46,43 @@ public class FileSourceTest
         }
     }
 
-//     @Test
-//     public void testGetInputStream()
-//         throws Exception
-//     {
-//         File txtFile = new File( "target/test-classes/source.txt" );
-//         FileSource source = new FileSource( txtFile );
+    @Test
+    public void testGetInputStream()
+        throws Exception
+    {
+        File txtFile = new File( "target/test-classes/source.txt" );
+        FileSource source = new FileSource( txtFile );
 
-//         try ( InputStream is = source.getInputStream();
-//               Scanner scanner = new Scanner( is ) )
-//         {
+        try ( InputStream is = source.getInputStream();
+              Scanner scanner = new Scanner( is ) )
+        {
 
-//             assertEquals( "Hello World!", scanner.nextLine() );
-//         }
-//     }
+            assertEquals( "Hello World!", scanner.nextLine() );
+        }
+    }
 
-//     @Test
-//     public void testGetLocation()
-//     {
-//         File txtFile = new File( "target/test-classes/source.txt" );
-//         FileSource source = new FileSource( txtFile );
-//         assertEquals( txtFile.getAbsolutePath(), source.getLocation() );
-//     }
+    @Test
+    public void testGetLocation()
+    {
+        File txtFile = new File( "target/test-classes/source.txt" );
+        FileSource source = new FileSource( txtFile );
+        assertEquals( txtFile.getAbsolutePath(), source.getLocation() );
+    }
 
-//     @Test
-//     public void testGetFile()
-//     {
-//         File txtFile = new File( "target/test-classes/source.txt" );
-//         FileSource source = new FileSource( txtFile );
-//         assertEquals( txtFile.getAbsoluteFile(), source.getFile() );
-//     }
+    @Test
+    public void testGetFile()
+    {
+        File txtFile = new File( "target/test-classes/source.txt" );
+        FileSource source = new FileSource( txtFile );
+        assertEquals( txtFile.getAbsoluteFile(), source.getFile() );
+    }
 
-//     @Test
-//     public void testGetFile2()
-//     {
-//         File txtFile = new File( "target/test-classes/source.txt" );
-//         FileSource source = new FileSource( txtFile );
-//         source.toString();
-//         assertTrue(true);
-//     }
+    @Test
+    public void testGetFile2()
+    {
+        File txtFile = new File( "target/test-classes/source.txt" );
+        FileSource source = new FileSource( txtFile );
+        source.toString();
+        assertTrue(true);
+    }
 }
